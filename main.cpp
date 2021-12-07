@@ -40,9 +40,15 @@ int main() {
       {0,0,0}
    };
    Matrix m3;
+   Matrix m4{
+      {0,0,0},
+      {0,1,-1},
+      {0,0,2}
+   };
    test(m1);
    test(m2);
    test(m3);
+   test(m4);
 
    //----- End of program -----
    cout << "Press ENTER to quit.";
@@ -51,7 +57,11 @@ int main() {
 }
 
 void test(Matrix& m){
-   cout << "Display vector       : " << m.at(0) << endl;
+   if(m.empty()) {
+      cout << "Display vector       : " << "vide" << endl;
+   }else{
+      cout << "Display vector       : " << m.at(0) << endl;
+   }
    cout << "Display matrix       : " << m << endl;
    cout << "Is square            : " << isSquare(m) << endl;
    cout << "Is regular           : " << isRegular(m) << endl;
@@ -63,4 +73,5 @@ void test(Matrix& m){
    cout << "Matrix shuffle       : " << m << endl;
    sortMatrix(m);
    cout << "Matrix sort          : " << m << endl;
+   cout << "----------------------------------------------------"<<endl;
 }

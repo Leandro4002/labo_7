@@ -34,8 +34,8 @@ bool isGreaterThan(const VInt& v1, const VInt& v2){
 
 // ----- utilities functions -----
 bool isSquare(const Matrix& m){
-   return min_element(m.begin(), m.end(), isSmallerThan) == max_element(m.begin()
-      , m.end(), isGreaterThan);
+   return !m.empty() && isRegular(m) && min_element(m.begin(), m.end(),
+          isSmallerThan)->size()== m.size();
 }
 
 bool isRegular(const Matrix& m){
