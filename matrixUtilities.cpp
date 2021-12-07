@@ -21,10 +21,18 @@ using namespace std;
 
 // ----- predicates -----
 
+bool isSmallerThan(const VInt& v1, const VInt& v2){
+   return v1.size() < v2.size();
+}
+
+bool isGreaterThan(const VInt& v1, const VInt& v2){
+   return v1.size() > v2.size();
+}
+
 // ----- utilities functions -----
 bool isSquare(const Matrix& m){
-   // TODO all
-   return true;
+   return min_element(m.begin(), m.end(), isSmallerThan) == max_element(m.begin()
+      , m.end(), isGreaterThan);
 }
 
 bool isRegular(const Matrix& m){
@@ -61,9 +69,25 @@ void sortMatrix(Matrix& m){
 }
 
 ostream& operator<< (ostream& os,const VInt& v){
-
+   os << "[";
+   for(auto i = v.begin(); i != v.end(); ++i){
+      if(i != v.begin()){
+         os << ", ";
+      }
+      os << *i;
+   }
+   os << "]";
+   return os;
 }
 
 ostream& operator<< (ostream& os,const Matrix& m){
-
+   os << "[";
+   for(auto i = m.begin(); i != m.end(); ++i){
+      if(i != m.begin()){
+         os << ", ";
+      }
+      os << *i;
+   }
+   os << "]";
+   return os;
 }
