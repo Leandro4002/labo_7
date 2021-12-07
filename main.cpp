@@ -49,11 +49,17 @@ int main(){
 }
 
 void test(Matrix& m){
-   cout << "Afficher un vecteur : " << m.at(0) << endl;
-   cout << "Afficher une matrice : " << m << endl;
-   cout << "Est carre : " << boolalpha << isSquare(m) << endl;
-   cout << "Est reguliere : " << boolalpha << isRegular(m) << endl;
-   cout << "Longueur de la colonne min : " << boolalpha << isRegular(m) << endl;
-   cout << "Somme de la ligne 1 : " << boolalpha << isRegular(m) << endl;
-
+   cout << "Display vector       : " << m.at(0) << endl;
+   cout << "Display matrix       : " << m << endl;
+   cout << "Is square            : " << boolalpha << isSquare(m) << endl;
+   cout << "Is regular           : " << boolalpha << isRegular(m) << endl;
+   cout << "Minimum column size  : " << minColumn(m) << endl;
+   cout << "Row sum              : " << sumRow(m) << endl;
+   cout << "Column sum           : " << sumColumn(m) << endl;
+   cout << "Vector minimal sum   : " << vectSumMin(m)
+   << endl;
+   shuffleMatrix(m);
+   cout << "Matrix shiffle       : " << m << endl;
+   sortMatrix(m);
+   cout << "Matrix sort          : "  << m << endl;
 }
