@@ -20,6 +20,9 @@ Compiler      : Mingw-w64 g++ 11.1.0
 using namespace std;
 
 // ----- predicates -----
+bool isSameSizeAs(VInt val1, VInt val2) {
+	return val1.size() == val2.size();
+}
 
 bool isSmallerThan(const VInt& v1, const VInt& v2){
    return v1.size() < v2.size();
@@ -36,8 +39,7 @@ bool isSquare(const Matrix& m){
 }
 
 bool isRegular(const Matrix& m){
-	// TODO all
-   return true;
+	return equal(m.begin(), m.end() - 1, m.begin() + 1, isSameSizeAs);
 }
 
 size_t minColumn(const Matrix& m){
