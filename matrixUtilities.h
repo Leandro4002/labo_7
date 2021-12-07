@@ -1,6 +1,16 @@
-//
-// Created by Leandrinho on 07.12.2021.
-//
+/*
+-----------------------------------------------------------------------------------
+File name     : matrixUtilities.h
+Authors       : Miguel Jalube, Leandro Saraiva Maia
+Creation date : 07.12.2021
+
+Description   : This library provides usefull functions to manipulate vectors and
+                matrices
+Remark(s)     :
+
+Compiler      : Mingw-w64 g++ 11.1.0
+-----------------------------------------------------------------------------------
+*/
 
 #ifndef INC_07_VECTEURS_MATRICES_MATRIXUTILITIES_H
 #define INC_07_VECTEURS_MATRICES_MATRIXUTILITIES_H

@@ -1,12 +1,14 @@
 /*
 -----------------------------------------------------------------------------------
 File name     : main.cpp
-Lab name      :
-Author(s)     : Leandro Saraiva Maia, Miguel Jalube
+Lab name      : Lab 7, Vectors and matrices
+Authors       : Miguel Jalube, Leandro Saraiva Maia
 Creation date : 07.12.2021
 
-Description   :
-Remark(s)     :
+Description   : This program tests the functions given by the matrixUtilites
+ 					 library.
+Remark(s)     : An empty matrix is considered as square and regular. irregular
+                matrices are ignored.
 
 Compiler      : Mingw-w64 g++ 11.1.0
 -----------------------------------------------------------------------------------
@@ -40,8 +42,9 @@ int main(){
    test(m2);
    test(m3);
 
-   cout << "Pressez ENTER pour terminer";
-   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+   //----- End of program -----
+   cout << "Press ENTER to quit.";
+   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // empty buffer
    return EXIT_SUCCESS;
 }
 

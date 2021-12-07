@@ -1,6 +1,15 @@
-//
-// Created by Leandrinho on 07.12.2021.
-//
+/*
+-----------------------------------------------------------------------------------
+File name     : matrixUtilities.cpp
+Authors       : Miguel Jalube, Leandro Saraiva Maia
+Creation date : 07.12.2021
+
+Description   : See matrixUtilities.h
+Remark(s)     :
+
+Compiler      : Mingw-w64 g++ 11.1.0
+-----------------------------------------------------------------------------------
+*/
 
 #include "matrixUtilities.h"
 #include <vector>          // required for
