@@ -24,7 +24,9 @@ using namespace std ;
 
 void test(Matrix& m);
 
-int main(){
+int main() {
+	cout << boolalpha;
+
    Matrix m1{
       {0,0,0},
       {0},
@@ -51,15 +53,14 @@ int main(){
 void test(Matrix& m){
    cout << "Display vector       : " << m.at(0) << endl;
    cout << "Display matrix       : " << m << endl;
-   cout << "Is square            : " << boolalpha << isSquare(m) << endl;
-   cout << "Is regular           : " << boolalpha << isRegular(m) << endl;
+   cout << "Is square            : " << isSquare(m) << endl;
+   cout << "Is regular           : " << isRegular(m) << endl;
    cout << "Minimum column size  : " << minColumn(m) << endl;
    cout << "Row sum              : " << sumRow(m) << endl;
    cout << "Column sum           : " << sumColumn(m) << endl;
-   cout << "Vector minimal sum   : " << vectSumMin(m)
-   << endl;
+   cout << "Vector minimal sum   : " << vectSumMin(m) << endl;
    shuffleMatrix(m);
-   cout << "Matrix shiffle       : " << m << endl;
+   cout << "Matrix shuffle       : " << m << endl;
    sortMatrix(m);
-   cout << "Matrix sort          : "  << m << endl;
+   cout << "Matrix sort          : " << m << endl;
 }

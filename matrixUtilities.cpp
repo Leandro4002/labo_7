@@ -19,13 +19,16 @@ Compiler      : Mingw-w64 g++ 11.1.0
 
 using namespace std;
 
+// ----- predicates -----
+
+// ----- utilities functions -----
 bool isSquare(const Matrix& m){
    // TODO all
    return true;
 }
 
 bool isRegular(const Matrix& m){
-   // TODO all
+	// TODO all
    return true;
 }
 

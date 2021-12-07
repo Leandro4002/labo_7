@@ -18,7 +18,11 @@ Compiler      : Mingw-w64 g++ 11.1.0
 int getRandomIntBetween(int min, int max) {
 	assert(min < max);
 
-	//TODO set seed once
+	static bool seeded = false;
+	if(!seeded) {
+		srand((unsigned)time(nullptr));
+		seeded = true;
+	}
 
 	return (std::rand() % (max - min) + min);
 }
