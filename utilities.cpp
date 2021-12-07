@@ -14,6 +14,7 @@ Compiler      : Mingw-w64 g++ 11.1.0
 #include "utilities.h"
 #include <random>
 #include <cassert>
+#include <ctime>
 
 int getRandomIntBetween(int min, int max) {
 	assert(min < max);
