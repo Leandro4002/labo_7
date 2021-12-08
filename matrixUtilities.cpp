@@ -20,7 +20,7 @@ Compiler      : Mingw-w64 g++ 11.1.0
 using namespace std;
 
 // ----- predicates -----
-bool isSameSizeAs(VInt val1, VInt val2) {
+bool isSameSizeAs(const VInt& val1, const VInt& val2) {
 	return val1.size() == val2.size();
 }
 
@@ -47,12 +47,12 @@ size_t minColumn(const Matrix& m){
    return 0ull;
 }
 
-int sumRow(const Matrix& m){
+VInt sumRow(const Matrix& m){
    // TODO all
    return 0;
 }
 
-int sumColumn(const Matrix& m){
+VInt sumColumn(const Matrix& m){
    // TODO all
    return true;
 }

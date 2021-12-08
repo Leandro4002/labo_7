@@ -44,13 +44,13 @@ std::size_t minColumn(const Matrix& m);
  * @param m
  * @return
  */
-int sumRow(const Matrix& m);
+VInt sumRow(const Matrix& m);
 /**
  *
  * @param m
  * @return
  */
-int sumColumn(const Matrix& m);
+VInt sumColumn(const Matrix& m);
 /**
  *
  * @param m
