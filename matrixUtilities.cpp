@@ -12,10 +12,13 @@ Compiler      : Mingw-w64 g++ 11.1.0
 */
 
 #include "matrixUtilities.h"
+#include <random>
 #include <vector>          // required for
 #include <algorithm>       // required for
 #include <iostream>        // required for
 #include <limits>          // required for
+#include <ctime>          // required for
+#include <random>
 
 using namespace std;
 
@@ -57,8 +60,9 @@ VInt sumRow(const Matrix& m){
 }
 
 VInt sumColumn(const Matrix& m){
-   VInt result(max_element(m.begin(), m.end(), isGreaterThan)->size());
-   transform(m.begin(), m.end(), result.begin(), )
+   // TODO because jai pas reussi
+   /*VInt result(max_element(m.begin(), m.end(), isGreaterThan)->size());
+   for_each(result.begin(), result.end(), add);*/
    return {};
 }
 
@@ -68,7 +72,8 @@ VInt vectSumMin(const Matrix& m){
 }
 
 void shuffleMatrix(Matrix& m){
-   // TODO all
+   long long int seed = time(nullptr);
+   shuffle(m.begin(), m.end(), mt19937(seed));
 }
 
 void sortMatrix(Matrix& m){
