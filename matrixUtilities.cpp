@@ -43,8 +43,7 @@ bool isRegular(const Matrix& m){
 }
 
 size_t minColumn(const Matrix& m){
-   // TODO all
-   return 0ull;
+   return min_element(m.begin(), m.end(), isSmallerThan)->size();
 }
 
 VInt sumRow(const Matrix& m){
