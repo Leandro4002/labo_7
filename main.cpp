@@ -41,14 +41,18 @@ int main() {
    };
    Matrix m3;
    Matrix m4{
-      {0,0,0},
+      {0},
       {0,1,-1},
       {0,0,2}
+   };
+   Matrix m5{
+      {0}
    };
    test(m1);
    test(m2);
    test(m3);
    test(m4);
+   test(m5);
 
    //----- End of program -----
    cout << "Press ENTER to quit.";
