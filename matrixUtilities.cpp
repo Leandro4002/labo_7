@@ -34,8 +34,13 @@ bool isGreaterThan(const VInt& v1, const VInt& v2){
 
 // ----- utilities functions -----
 bool isSquare(const Matrix& m){
-   return !m.empty() && isRegular(m) && min_element(m.begin(), m.end(),
-          isSmallerThan)->size()== m.size();
+   bool isSquare = m.empty();
+   if(!isSquare){
+      isSquare =  isRegular(m) &&
+                  min_element(m.begin(), m.end(), isSmallerThan)
+                     ->size() == m.size();
+   }
+   return isSquare;
 }
 
 bool isRegular(const Matrix& m){
@@ -52,7 +57,8 @@ VInt sumRow(const Matrix& m){
 }
 
 VInt sumColumn(const Matrix& m){
-   // TODO all
+   VInt result(max_element(m.begin(), m.end(), isGreaterThan)->size());
+   transform(m.begin(), m.end(), result.begin(), )
    return {};
 }
 
@@ -71,7 +77,7 @@ void sortMatrix(Matrix& m){
 
 ostream& operator<< (ostream& os,const VInt& v){
    os << "[";
-   for(auto i = v.begin(); i != v.end(); ++i){
+   for(VInt::const_iterator i = v.begin(); i != v.end(); ++i){
       if(i != v.begin()){
          os << ", ";
       }
@@ -83,7 +89,7 @@ ostream& operator<< (ostream& os,const VInt& v){
 
 ostream& operator<< (ostream& os,const Matrix& m){
    os << "[";
-   for(auto i = m.begin(); i != m.end(); ++i){
+   for(Matrix::const_iterator i = m.begin(); i != m.end(); ++i){
       if(i != m.begin()){
          os << ", ";
       }
