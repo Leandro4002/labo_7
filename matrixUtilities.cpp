@@ -29,10 +29,6 @@ bool isSmallerThan(const VInt& v1, const VInt& v2){
    return v1.size() < v2.size();
 }
 
-bool isGreaterThan(const VInt& v1, const VInt& v2){
-   return v1.size() > v2.size();
-}
-
 // ----- utilities functions -----
 bool isSquare(const Matrix& m){
    bool square = m.empty();
