@@ -68,10 +68,16 @@ VInt sumRow(const Matrix& m){
 }
 
 VInt sumColumn(const Matrix& m){
-   // TODO because jai pas reussi
-   /*VInt result(max_element(m.begin(), m.end(), isGreaterThan)->size());
-   for_each(result.begin(), result.end(), add);*/
-   return {};
+   VInt result;
+   if(!m.empty()) {
+      result.resize(max_element(m.begin(), m.end(), isSmallerThan)->size());
+      for (const VInt &i: m) {
+         for (size_t j = 0; j < i.size(); ++j) {
+            result.at(j) += i.at(j);
+         }
+      }
+   }
+   return result;
 }
 
 VInt vectSumMin(const Matrix& m){
