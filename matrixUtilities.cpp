@@ -16,7 +16,9 @@ Compiler      : Mingw-w64 g++ 11.1.0
 #include <vector>          // required for
 #include <algorithm>       // required for
 #include <iostream>        // required for
+#include <limits>          // required for
 #include <ctime>          // required for
+#include <random>
 
 using namespace std;
 
@@ -51,7 +53,7 @@ bool isRegular(const Matrix& m){
 size_t minColumn(const Matrix& m){
    size_t size = 0;
    if(!m.empty()){
-      size = (*min_element(m.begin(), m.end(), isSmallerThan)).size();
+      size = min_element(m.begin(), m.end(), isSmallerThan)->size();
    }
    return size;
 }
@@ -64,7 +66,7 @@ VInt sumRow(const Matrix& m){
 VInt sumColumn(const Matrix& m){
    VInt result;
    if(!m.empty()) {
-      result.resize((*max_element(m.begin(), m.end(), isSmallerThan)).size());
+      result.resize(max_element(m.begin(), m.end(), isSmallerThan)->size());
       for (const VInt &i: m) {
          for (size_t j = 0; j < i.size(); ++j) {
             result.at(j) += i.at(j);
