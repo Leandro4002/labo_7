@@ -37,21 +37,29 @@ bool isGreaterThan(const VInt& v1, const VInt& v2){
 
 // ----- utilities functions -----
 bool isSquare(const Matrix& m){
-   bool isSquare = m.empty();
-   if(!isSquare){
-      isSquare =  isRegular(m) &&
+   bool square = m.empty();
+   if(!square){
+      square = isRegular(m) &&
                   min_element(m.begin(), m.end(), isSmallerThan)
                      ->size() == m.size();
    }
-   return isSquare;
+   return square;
 }
 
 bool isRegular(const Matrix& m){
-	return equal(m.begin(), m.end() - 1, m.begin() + 1, isSameSizeAs);
+   bool regular = m.empty();
+   if(!regular) {
+      regular = equal(m.begin(), m.end() - 1, m.begin() + 1, isSameSizeAs);
+   }
+	return regular;
 }
 
 size_t minColumn(const Matrix& m){
-   return min_element(m.begin(), m.end(), isSmallerThan)->size();
+   size_t size = 0;
+   if(!m.empty()){
+      size = min_element(m.begin(), m.end(), isSmallerThan)->size();
+   }
+   return size;
 }
 
 VInt sumRow(const Matrix& m){
