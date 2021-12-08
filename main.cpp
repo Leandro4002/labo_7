@@ -57,11 +57,13 @@ int main() {
 }
 
 void test(Matrix& m){
+   cout << "Display vector       : ";
    if(m.empty()) {
-      cout << "Display vector       : " << "vide" << endl;
+      cout << "[]";
    }else{
-      cout << "Display vector       : " << m.at(0) << endl;
+      cout << m.at(0);
    }
+   cout << endl;
    cout << "Display matrix       : " << m << endl;
    cout << "Is square            : " << isSquare(m) << endl;
    cout << "Is regular           : " << isRegular(m) << endl;
