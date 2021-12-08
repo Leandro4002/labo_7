@@ -72,7 +72,7 @@ VInt vectSumMin(const Matrix& m){
 }
 
 void shuffleMatrix(Matrix& m){
-   long long int seed = time(nullptr);
+   static long long int seed = time(nullptr);
    shuffle(m.begin(), m.end(), mt19937(seed));
 }
 
