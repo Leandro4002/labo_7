@@ -40,18 +40,14 @@ bool isSquare(const Matrix& m){
    bool square = m.empty();
    if(!square){
       square = isRegular(m) &&
-                  min_element(m.begin(), m.end(), isSmallerThan)
-                     ->size() == m.size();
+			(*min_element(m.begin(), m.end(), isSmallerThan))
+                     .size() == m.size();
    }
    return square;
 }
 
 bool isRegular(const Matrix& m){
-   bool regular = m.empty();
-   if(!regular) {
-      regular = equal(m.begin(), m.end() - 1, m.begin() + 1, isSameSizeAs);
-   }
-	return regular;
+	return m.empty() || equal(m.begin(), m.end() - 1, m.begin() + 1, isSameSizeAs);
 }
 
 size_t minColumn(const Matrix& m){
