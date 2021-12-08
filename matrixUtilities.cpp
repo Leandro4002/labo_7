@@ -16,7 +16,9 @@ Compiler      : Mingw-w64 g++ 11.1.0
 #include <vector>          // required for
 #include <algorithm>       // required for
 #include <iostream>        // required for
+#include <limits>          // required for
 #include <ctime>          // required for
+#include <random>
 
 using namespace std;
 
@@ -29,25 +31,29 @@ bool isSmallerThan(const VInt& v1, const VInt& v2){
    return v1.size() < v2.size();
 }
 
+bool isGreaterThan(const VInt& v1, const VInt& v2){
+   return v1.size() > v2.size();
+}
+
 // ----- utilities functions -----
 bool isSquare(const Matrix& m){
-   return m.empty() || (isRegular(m) &&
-      (*min_element(m.begin(), m.end(), isSmallerThan))
-                      .size() == m.size());
+   bool square = m.empty();
+   if(!square){
+      square = isRegular(m) &&
+			(*min_element(m.begin(), m.end(), isSmallerThan))
+                     .size() == m.size();
+   }
+   return square;
 }
 
 bool isRegular(const Matrix& m){
-   bool regular = m.empty();
-   if(!regular) {
-      regular = equal(m.begin(), m.end() - 1, m.begin() + 1, isSameSizeAs);
-   }
-	return regular;
+	return m.empty() || equal(m.begin(), m.end() - 1, m.begin() + 1, isSameSizeAs);
 }
 
 size_t minColumn(const Matrix& m){
    size_t size = 0;
    if(!m.empty()){
-      size = (*min_element(m.begin(), m.end(), isSmallerThan)).size();
+      size = min_element(m.begin(), m.end(), isSmallerThan)->size();
    }
    return size;
 }
@@ -60,7 +66,7 @@ VInt sumRow(const Matrix& m){
 VInt sumColumn(const Matrix& m){
    VInt result;
    if(!m.empty()) {
-      result.resize((*max_element(m.begin(), m.end(), isSmallerThan)).size());
+      result.resize(max_element(m.begin(), m.end(), isSmallerThan)->size());
       for (const VInt &i: m) {
          for (size_t j = 0; j < i.size(); ++j) {
             result.at(j) += i.at(j);
