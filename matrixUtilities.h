@@ -22,15 +22,15 @@ using VInt = std::vector<int>;
 using Matrix = std::vector<VInt>;
 
 /**
- *
- * @param matrix
- * @return
+ * Checks if the matrix have the same number of lines and columns
+ * @param   matrix the matrix to check
+ * @return  boolean true if the matrix is square
  */
 bool isSquare(const Matrix& matrix);
 /**
- *
- * @param matrix
- * @return
+ * Check if all the lines in a matrix have the same number of columns
+ * @param   matrix the matrix to check
+ * @return  boolean true if regular
  */
 bool isRegular(const Matrix& matrix);
 /**
@@ -68,17 +68,17 @@ void shuffleMatrix(Matrix& matrix);
  */
 void sortMatrix(Matrix& matrix);
 /**
- *
+ * Operator << for int vectors
  * @param os
  * @param vector
  * @return
  */
 std::ostream& operator<< (std::ostream& os,const VInt& vector);
 /**
- *
- * @param os
- * @param matrix
- * @return
+ * Operator << for matrix (matrix = vector<vector<int>>)
+ * @param   os
+ * @param   matrix
+ * @return  returns the ostream
  */
 std::ostream& operator<< (std::ostream& os,const Matrix& matrix);
 
