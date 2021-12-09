@@ -21,47 +21,58 @@ Compiler      : Mingw-w64 g++ 11.1.0
 using namespace std;
 
 // ----- predicates -----
-bool isSameSizeAs(const VInt& val1, const VInt& val2) {
-	return val1.size() == val2.size();
+/**
+ * Checks if 2 vectors have the same size
+ * @param vector1
+ * @param vector2
+ * @return boolean true if vectors have the same size
+ */
+bool isSameSizeAs(const VInt& vector1, const VInt& vector2) {
+	return vector1.size() == vector2.size();
 }
-
-bool isSmallerThan(const VInt& v1, const VInt& v2){
-   return v1.size() < v2.size();
+/**
+ * Checks if vector1 smaller than vector2
+ * @param vector1
+ * @param vector2
+ * @return boolean true if vector1 is smaller
+ */
+bool isSmallerThan(const VInt& vector1, const VInt& vector2){
+   return vector1.size() < vector2.size();
 }
 
 // ----- utilities functions -----
-bool isSquare(const Matrix& m){
-   bool square = m.empty();
+bool isSquare(const Matrix& matrix){
+   bool square = matrix.empty();
    if(!square){
-      square = isRegular(m) &&
-			(*min_element(m.begin(), m.end(), isSmallerThan))
-                     .size() == m.size();
+      square = isRegular(matrix) &&
+               (*min_element(matrix.begin(), matrix.end(), isSmallerThan))
+                     .size() == matrix.size();
    }
    return square;
 }
 
-bool isRegular(const Matrix& m){
-	return m.empty() || equal(m.begin(), m.end() - 1, m.begin() + 1, isSameSizeAs);
+bool isRegular(const Matrix& matrix){
+	return matrix.empty() || equal(matrix.begin(), matrix.end() - 1, matrix.begin() + 1, isSameSizeAs);
 }
 
-size_t minColumn(const Matrix& m){
+size_t minColumn(const Matrix& matrix){
    size_t size = 0;
-   if(!m.empty()){
-		size = (*min_element(m.begin(), m.end(), isSmallerThan)).size();
+   if(!matrix.empty()){
+		size = (*min_element(matrix.begin(), matrix.end(), isSmallerThan)).size();
    }
    return size;
 }
 
-VInt sumRow(const Matrix& m){
+VInt sumRow(const Matrix& matrix){
    // TODO all
    return {};
 }
 
-VInt sumColumn(const Matrix& m){
+VInt sumColumn(const Matrix& matrix){
    VInt result;
-   if(!m.empty()) {
-		result.resize((*max_element(m.begin(), m.end(), isSmallerThan)).size());
-      for (const VInt &i: m) {
+   if(!matrix.empty()) {
+		result.resize((*max_element(matrix.begin(), matrix.end(), isSmallerThan)).size());
+      for (const VInt &i: matrix) {
          for (size_t j = 0; j < i.size(); ++j) {
             result.at(j) += i.at(j);
          }
@@ -70,24 +81,24 @@ VInt sumColumn(const Matrix& m){
    return result;
 }
 
-VInt vectSumMin(const Matrix& m){
+VInt vectSumMin(const Matrix& matrix){
    // TODO all
    return {};
 }
 
-void shuffleMatrix(Matrix& m){
+void shuffleMatrix(Matrix& matrix){
    static long long int seed = time(nullptr);
-   shuffle(m.begin(), m.end(), mt19937(seed));
+   shuffle(matrix.begin(), matrix.end(), mt19937(seed));
 }
 
-void sortMatrix(Matrix& m){
+void sortMatrix(Matrix& matrix){
    // TODO all
 }
 
-ostream& operator<< (ostream& os,const VInt& v){
+ostream& operator<< (ostream& os,const VInt& vector){
    os << "[";
-   for(VInt::const_iterator i = v.begin(); i != v.end(); ++i){
-      if(i != v.begin()){
+   for(VInt::const_iterator i = vector.begin(); i != vector.end(); ++i){
+      if(i != vector.begin()){
          os << ", ";
       }
       os << *i;
@@ -96,10 +107,10 @@ ostream& operator<< (ostream& os,const VInt& v){
    return os;
 }
 
-ostream& operator<< (ostream& os,const Matrix& m){
+ostream& operator<< (ostream& os,const Matrix& matrix){
    os << "[";
-   for(Matrix::const_iterator i = m.begin(); i != m.end(); ++i){
-      if(i != m.begin()){
+   for(Matrix::const_iterator i = matrix.begin(); i != matrix.end(); ++i){
+      if(i != matrix.begin()){
          os << ", ";
       }
       os << *i;

@@ -23,63 +23,63 @@ using Matrix = std::vector<VInt>;
 
 /**
  *
- * @param m
+ * @param matrix
  * @return
  */
-bool isSquare(const Matrix& m);
+bool isSquare(const Matrix& matrix);
 /**
  *
- * @param m
+ * @param matrix
  * @return
  */
-bool isRegular(const Matrix& m);
+bool isRegular(const Matrix& matrix);
 /**
  *
- * @param m
+ * @param matrix
  * @return
  */
-std::size_t minColumn(const Matrix& m);
+std::size_t minColumn(const Matrix& matrix);
 /**
  *
- * @param m
+ * @param matrix
  * @return
  */
-VInt sumRow(const Matrix& m);
+VInt sumRow(const Matrix& matrix);
 /**
  *
- * @param m
+ * @param matrix
  * @return
  */
-VInt sumColumn(const Matrix& m);
+VInt sumColumn(const Matrix& matrix);
 /**
  *
- * @param m
+ * @param matrix
  * @return
  */
-VInt vectSumMin(const Matrix& m);
+VInt vectSumMin(const Matrix& matrix);
 /**
  *
- * @param m
+ * @param matrix
  */
-void shuffleMatrix(Matrix& m);
+void shuffleMatrix(Matrix& matrix);
 /**
  *
- * @param m
+ * @param matrix
  */
-void sortMatrix(Matrix& m);
+void sortMatrix(Matrix& matrix);
 /**
  *
  * @param os
- * @param v
+ * @param vector
  * @return
  */
-std::ostream& operator<< (std::ostream& os,const VInt& v);
+std::ostream& operator<< (std::ostream& os,const VInt& vector);
 /**
  *
  * @param os
- * @param m
+ * @param matrix
  * @return
  */
-std::ostream& operator<< (std::ostream& os,const Matrix& m);
+std::ostream& operator<< (std::ostream& os,const Matrix& matrix);
 
 #endif //INC_07_VECTEURS_MATRICES_MATRIXUTILITIES_H
