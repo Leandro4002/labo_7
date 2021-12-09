@@ -72,7 +72,6 @@ VInt sumColumn(const Matrix& matrix){
    VInt result;
    if(!matrix.empty()) {
 		result.resize((*max_element(matrix.begin(), matrix.end(), isSmallerThan)).size());
-      // TODO : with accumulate and transform
       for (const VInt &i: matrix) {
          for (size_t j = 0; j < i.size(); ++j) {
             result.at(j) += i.at(j);
