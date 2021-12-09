@@ -14,6 +14,8 @@ Compiler      : Mingw-w64 g++ 11.1.0
 #include "matrixUtilities.h" // Prototypes and aliases (Matrix, VInt)
 #include <vector>            // required for internal use of vector (Matrix, VInt)
 #include <algorithm>         // required for sort functions
+#include <numeric>           // required for accumulate
+#include <iterator>          // required for distance()
 #include <iostream>          // required for cout
 #include <ctime>             // required to generate a seed based on time
 #include <random>            // required to generate random numbers
@@ -40,6 +42,17 @@ bool isSmallerThan(const VInt& vector1, const VInt& vector2){
    return vector1.size() < vector2.size();
 }
 
+/**
+ * Checks if the first element of the vector1 is smaller than the first element of
+ * the vector2
+ * @param vector1
+ * @param vector2
+ * @return boolean true if the first value of the vector1 is smaller
+ */
+bool isFirstElemSmallerThan(const VInt& vector1, const VInt& vector2) {
+	return vector1.at(0) < vector2.at(0);
+}
+
 // ----- utilities functions -----
 bool isSquare(const Matrix& matrix){
    bool square = matrix.empty();
@@ -63,9 +76,15 @@ size_t minColumn(const Matrix& matrix){
    return size;
 }
 
-VInt sumRow(const Matrix& matrix){
-   // TODO all
-   return {};
+VInt sumRow(const Matrix& m){
+	if (m.empty()) return {};
+
+	VInt result = VInt(m.size());
+	for (size_t i = 0; i < m.size(); ++i) {
+		result[i] = accumulate(m[i].begin(), m[i].end(), 0);
+	}
+
+   return result;
 }
 
 VInt sumColumn(const Matrix& matrix){
@@ -82,9 +101,14 @@ VInt sumColumn(const Matrix& matrix){
    return result;
 }
 
-VInt vectSumMin(const Matrix& matrix){
-   // TODO all
-   return {};
+VInt vectSumMin(const Matrix& m){
+	if (m.empty()) return {};
+
+   VInt vSumRow = sumRow(m);
+	size_t indexOfMinSumRow = (size_t)distance(vSumRow.begin(),
+	                          min_element(vSumRow.begin(), vSumRow.end()));
+
+	return m[indexOfMinSumRow];
 }
 
 void shuffleMatrix(Matrix& matrix){
@@ -93,7 +117,9 @@ void shuffleMatrix(Matrix& matrix){
 }
 
 void sortMatrix(Matrix& matrix){
-   // TODO all
+	if (matrix.empty()) return;
+
+	sort(matrix.begin(), matrix.end(), isFirstElemSmallerThan);
 }
 
 ostream& operator<< (ostream& os,const VInt& vector){
