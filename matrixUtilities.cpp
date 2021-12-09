@@ -42,8 +42,10 @@ bool isSmallerThan(const VInt& vector1, const VInt& vector2){
 
 // ----- utilities functions -----
 bool isSquare(const Matrix& matrix){
-   bool square = matrix.empty();
-   if(!square){
+   bool square = false;
+   if(!matrix.empty()){
+      // Checks if the matrix is regular AND if the size of the biggest vector is
+      // equal to the size of the matrix
       square = isRegular(matrix) &&
                (*min_element(matrix.begin(), matrix.end(), isSmallerThan))
                      .size() == matrix.size();
@@ -58,6 +60,8 @@ bool isRegular(const Matrix& matrix){
 size_t minColumn(const Matrix& matrix){
    size_t size = 0;
    if(!matrix.empty()){
+
+      // Gets the size of the vector with the smallest size (using isSmallerThen)
 		size = (*min_element(matrix.begin(), matrix.end(), isSmallerThan)).size();
    }
    return size;
@@ -71,7 +75,11 @@ VInt sumRow(const Matrix& matrix){
 VInt sumColumn(const Matrix& matrix){
    VInt result;
    if(!matrix.empty()) {
+      // Resizes result vector to the same size as the biggest vector in the matrix
 		result.resize((*max_element(matrix.begin(), matrix.end(), isSmallerThan)).size());
+
+      // For each vector in the matrix increment the result vector (default value
+      // is 0) adding the value of matrix[i][j] to result[j]
       for (const VInt &i: matrix) {
          for (size_t j = 0; j < i.size(); ++j) {
             result.at(j) += i.at(j);
@@ -87,7 +95,11 @@ VInt vectSumMin(const Matrix& matrix){
 }
 
 void shuffleMatrix(Matrix& matrix){
+   // Sets the random seed in static so is not resetted for each call
    static long long int seed = time(nullptr);
+
+   // Shuffles the matrix elements using the random generator mt19937 seeded using
+   // the ctime library
    shuffle(matrix.begin(), matrix.end(), mt19937(seed));
 }
 
@@ -96,19 +108,21 @@ void sortMatrix(Matrix& matrix){
 }
 
 ostream& operator<< (ostream& os,const VInt& vector){
-   os << "[";
+   os << "(";
+   // Loop to send in the ostream, the value at *i
    for(VInt::const_iterator i = vector.begin(); i != vector.end(); ++i){
       if(i != vector.begin()){
          os << ", ";
       }
       os << *i;
    }
-   os << "]";
+   os << ")";
    return os;
 }
 
 ostream& operator<< (ostream& os,const Matrix& matrix){
    os << "[";
+   // Loop to send in the ostream, the vector at *i
    for(Matrix::const_iterator i = matrix.begin(); i != matrix.end(); ++i){
       if(i != matrix.begin()){
          os << ", ";
