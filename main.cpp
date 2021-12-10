@@ -66,7 +66,7 @@ int main() {
 
  		{{ 3, 0},
 		 { 1,-1},
-		 { 2}},
+		 {-5}},
 
  		{{ 4, 0, -1, 1, -1, 0},
 		 { 1,-1},
@@ -110,7 +110,7 @@ void test(Matrix& m){
    cout << "Display matrix       : " << m << endl;
    cout << "Is square            : " << isSquare(m) << endl;
    cout << "Is regular           : " << isRegular(m) << endl;
-   cout << "Minimum column size  : " << minColumn(m) << endl;
+   cout << "Minimum row size     : " << minRow(m) << endl;
    cout << "Row sum              : " << sumRow(m) << endl;
    cout << "Column sum           : " << sumColumn(m) << endl;
    cout << "Vector minimal sum   : " << vectSumMin(m) << endl;
