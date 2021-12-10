@@ -16,6 +16,7 @@ Compiler      : Mingw-w64 g++ 11.1.0
 #include <cassert>
 #include <ctime>
 
+// TODO Check if used
 int getRandomIntBetween(int min, int max) {
 	assert(min < max);
 
@@ -26,4 +27,10 @@ int getRandomIntBetween(int min, int max) {
 	}
 
 	return (std::rand() % (max - min) + min);
+}
+
+long long int getRSeed(){
+   // Sets the random seed in static so is not resetted for each call
+   static long long int seed = time(nullptr);
+   return seed;
 }

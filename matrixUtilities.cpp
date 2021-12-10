@@ -12,6 +12,7 @@ Compiler      : Mingw-w64 g++ 11.1.0
 */
 
 #include "matrixUtilities.h" // Prototypes and aliases (Matrix, VInt)
+#include "utilities.h"       // required for random
 #include <vector>            // required for internal use of vector (Matrix, VInt)
 #include <algorithm>         // required for sort functions
 #include <numeric>           // required for accumulate
@@ -119,12 +120,12 @@ VInt vectSumMin(const Matrix& m){
 }
 
 void shuffleMatrix(Matrix& matrix){
-   // Sets the random seed in static so is not resetted for each call
-   static long long int seed = time(nullptr);
+   if(!matrix.empty()) {
 
-   // Shuffles the matrix elements using the random generator mt19937 seeded using
-   // the ctime library
-   shuffle(matrix.begin(), matrix.end(), mt19937(seed));
+      // Shuffles the matrix elements using the random generator mt19937 seeded using
+      // the ctime library
+      shuffle(matrix.begin(), matrix.end(), mt19937(getRSeed()));
+   }
 }
 
 void sortMatrix(Matrix& matrix){

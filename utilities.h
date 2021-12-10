@@ -20,5 +20,10 @@ Compiler      : Mingw-w64 g++ 11.1.0
  * @return the generated int
  */
 int getRandomIntBetween(int min, int max);
+/**
+ * Get a random seed based on ctime
+ * @return seed
+ */
+long long int getRSeed();
 
 #endif //INC_07_VECTEURS_MATRICES_UTILITIES_H
