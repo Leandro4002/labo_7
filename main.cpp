@@ -17,7 +17,6 @@ Compiler      : Mingw-w64 g++ 11.1.0
 #include <cstdlib>            // required for EXIT_SUCCESS
 #include <iostream>           // required for cout
 #include <limits>             // required for numeric_limits<...>
-#include <vector>             // required to use vector
 #include "matrixUtilities.h"  // required for matrix manipulations
 
 using namespace std ;
@@ -63,7 +62,7 @@ int main() {
 void test(Matrix& m){
    cout << "Display vector       : ";
    if(m.empty()) {
-      cout << "[]";
+      cout << "()";
    }else{
       cout << m.at(0);
    }
@@ -76,8 +75,8 @@ void test(Matrix& m){
    cout << "Column sum           : " << sumColumn(m) << endl;
    cout << "Vector minimal sum   : " << vectSumMin(m) << endl;
    shuffleMatrix(m);
-   cout << "Matrix shuffle       : " << m << endl;
+   cout << "Matrix after shuffle : " << m << endl;
    sortMatrix(m);
-   cout << "Matrix sort          : " << m << endl;
+   cout << "Matrix after sort    : " << m << endl;
    cout << "----------------------------------------------------"<<endl;
 }
