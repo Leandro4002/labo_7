@@ -83,19 +83,19 @@ void shuffleMatrix(Matrix& matrix);
 void sortMatrix(Matrix& matrix);
 
 /**
- * Operator << for int vectors
+ * Operator << to format display of int vectors
  * @param os
  * @param vector
- * @return
+ * @return the ostream
  */
 std::ostream& operator<< (std::ostream& os,const VInt& vector);
 
 /**
- * Operator << for matrix (matrix = vector<vector<int>>)
+ * Operator << to format display of matrix (matrix = vector<vector<int>>)
  * @param   os
  * @param   matrix
- * @return  returns the ostream
+ * @return  the ostream
  */
 std::ostream& operator<< (std::ostream& os,const Matrix& matrix);
 
-#endif //INC_07_VECTEURS_MATRICES_MATRIXUTILITIES_H
+#endif
