@@ -40,7 +40,7 @@ bool isRegular(const Matrix& matrix);
  * @param   matrix
  * @return  the size of the smallest column
  */
-std::size_t minColumn(const Matrix& matrix);
+std::size_t minRow(const Matrix& matrix);
 
 /**
  * Returns a vector with the sum of each row of the matrix. The values are indexed
@@ -75,9 +75,11 @@ VInt vectSumMin(const Matrix& matrix);
 void shuffleMatrix(Matrix& matrix);
 
 /**
- * Order matrix in ascending order of the first element of each row. Example :
- * m = { {4, 4}, {1, 3}, {2} }
- * sortMatrix(m) // m = { {1, 3}, {2}, {4, 4} }
+ * Order matrix in ascending order of the first element of each row.
+ * This sort is unstable. Empty vectors are put first when sorted
+ * Example :
+ * m = { {4, 4}, {1, 3}, {}, {2} }
+ * sortMatrix(m) // m = { {}, {1, 3}, {2}, {4, 4} }
  * @param matrix
  */
 void sortMatrix(Matrix& matrix);

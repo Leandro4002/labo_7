@@ -17,6 +17,7 @@ Compiler      : Mingw-w64 g++ 11.1.0
 #include <cstdlib>            // required for EXIT_SUCCESS
 #include <iostream>           // required for cout
 #include <limits>             // required for numeric_limits<...>
+#include <vector>             // required because of hidden use of vector
 #include "matrixUtilities.h"  // required for matrix manipulations
 
 using namespace std ;
@@ -26,32 +27,71 @@ void test(Matrix& m);
 int main() {
 	cout << boolalpha;
 
-   Matrix m1{
-      {0,0,0},
-      {0},
-      {0,0},
-      {0,0,0}
-   };
-   Matrix m2{
-      {1,2,3},
-      {0,1,-1},
-      {0,0,2},
-      {4,5,6}
-   };
-   Matrix m3;
-   Matrix m4{
-      {0},
-      {0,1,-1},
-      {0,0,2}
-   };
-   Matrix m5{
-      {0}
-   };
-   test(m1);
-   test(m2);
-   test(m3);
-   test(m4);
-   test(m5);
+	Matrix testMatrices[] = {
+		// ----- Square cases -----
+		{{ 1, 4,-2},
+		 { 2, 2, 2},
+		 {-1,-1, 3}},
+
+		{{ 3,-1, 2, 1},
+		 { 4, 1, 0,-2},
+		 { 0, 1, 3,-4},
+		 {-3, 0, 2,-4}},
+
+		{{1,5},
+		 {3,1}},
+
+		{{ 0, 0, 0},
+		 { 0, 0, 0},
+		 { 0, 0, 0}},
+
+		// ----- Regular cases -----
+		{{ 1, 2, 2},
+       { 0, 1,-1},
+       { 0, 0, 2},
+       { 4, 5, 6}},
+
+		{{ 1, 3, 2, 4},
+       { 0, 1,-1, 4}},
+
+		{{ 1, 2, 3, 4, 5}},
+
+		{{ 0, 0, 0, 0},
+       { 0, 0, 0, 0}},
+
+		// ----- Irregular cases -----
+ 		{{ 1, 4},
+		 { 0, 3, 0},
+		 { 1, 5, 3}},
+
+ 		{{ 3, 0},
+		 { 1,-1},
+		 {-5}},
+
+ 		{{ 4, 0, -1, 1, -1, 0},
+		 { 1,-1},
+		 { 2, 1}},
+
+		// ----- Empty cases -----
+		{},
+
+		{{}},
+
+		{{},
+		 {}},
+
+		{{0,0,0},
+		 {},
+		 {0,0}},
+
+		{},
+		{{}},
+		{{0}},
+	};
+
+	for (Matrix& testMatrix : testMatrices) {
+		test(testMatrix);
+	}
 
    //----- End of program -----
    cout << "Press ENTER to quit.";
@@ -70,7 +110,7 @@ void test(Matrix& m){
    cout << "Display matrix       : " << m << endl;
    cout << "Is square            : " << isSquare(m) << endl;
    cout << "Is regular           : " << isRegular(m) << endl;
-   cout << "Minimum column size  : " << minColumn(m) << endl;
+   cout << "Minimum row size     : " << minRow(m) << endl;
    cout << "Row sum              : " << sumRow(m) << endl;
    cout << "Column sum           : " << sumColumn(m) << endl;
    cout << "Vector minimal sum   : " << vectSumMin(m) << endl;
