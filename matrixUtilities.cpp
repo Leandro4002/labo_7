@@ -12,9 +12,9 @@ Compiler      : Mingw-w64 g++ 11.1.0
 */
 
 #include "matrixUtilities.h" // Prototypes and aliases (Matrix, VInt)
-#include "utilities.h"       // required for random
 #include <vector>            // required for internal use of vector (Matrix, VInt)
 #include <algorithm>         // required for sort functions
+#include <ctime>             // required for random seed
 #include <numeric>           // required for accumulate
 #include <iterator>          // required for distance()
 #include <iostream>          // required for cout
@@ -130,9 +130,12 @@ VInt vectSumMin(const Matrix& matrix){
 
 void shuffleMatrix(Matrix& matrix){
    if(!matrix.empty()) {
+		// Sets the random seed in static, so it is not reset for each call
+		static long long int seed = time(nullptr);
+
       // Shuffles the matrix elements using the random generator mt19937 seeded using
       // the ctime library
-      shuffle(matrix.begin(), matrix.end(), mt19937(getRSeed()));
+      shuffle(matrix.begin(), matrix.end(), mt19937(seed));
    }
 }
 
