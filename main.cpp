@@ -22,7 +22,7 @@ Compiler      : Mingw-w64 g++ 11.1.0
 
 using namespace std ;
 
-void test(Matrix& m);
+void test(Matrix& matrix);
 
 int main() {
 	cout << boolalpha;
@@ -99,24 +99,24 @@ int main() {
    return EXIT_SUCCESS;
 }
 
-void test(Matrix& m){
+void test(Matrix& matrix){
    cout << "Display vector       : ";
-   if(m.empty()) {
+   if(matrix.empty()) {
       cout << "()";
    }else{
-      cout << m.at(0);
+      cout << matrix.at(0);
    }
    cout << endl;
-   cout << "Display matrix       : " << m << endl;
-   cout << "Is square            : " << isSquare(m) << endl;
-   cout << "Is regular           : " << isRegular(m) << endl;
-   cout << "Minimum row size     : " << minRow(m) << endl;
-   cout << "Row sum              : " << sumRow(m) << endl;
-   cout << "Column sum           : " << sumColumn(m) << endl;
-   cout << "Vector minimal sum   : " << vectSumMin(m) << endl;
-   shuffleMatrix(m);
-   cout << "Matrix after shuffle : " << m << endl;
-   sortMatrix(m);
-   cout << "Matrix after sort    : " << m << endl;
+   cout << "Display matrix       : " << matrix << endl;
+   cout << "Is square            : " << isSquare(matrix) << endl;
+   cout << "Is regular           : " << isRegular(matrix) << endl;
+   cout << "Minimum row size     : " << minRow(matrix) << endl;
+   cout << "Row sum              : " << sumRow(matrix) << endl;
+   cout << "Column sum           : " << sumColumn(matrix) << endl;
+   cout << "Vector minimal sum   : " << vectSumMin(matrix) << endl;
+   shuffleMatrix(matrix);
+   cout << "Matrix after shuffle : " << matrix << endl;
+   sortMatrix(matrix);
+   cout << "Matrix after sort    : " << matrix << endl;
    cout << "----------------------------------------------------"<<endl;
 }

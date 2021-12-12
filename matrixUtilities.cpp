@@ -81,15 +81,15 @@ size_t minRow(const Matrix& matrix){
 	       (*min_element(matrix.begin(), matrix.end(), isSmallerThan)).size();
 }
 
-VInt sumRow(const Matrix& m){
-	if (m.empty()) return {};
+VInt sumRow(const Matrix& matrix){
+	if (matrix.empty()) return {};
 
-	VInt result = VInt(m.size());
+	VInt result = VInt(matrix.size());
 	// For each vector in the matrix, we sum the elements of the vector and put it
 	// in a vector that is indexed in the same way as matrix (that is why we use a
 	// "for int i" and not a "for auto i :", because we want the int index).
-	for (size_t i = 0; i < m.size(); ++i) {
-		result[i] = accumulate(m[i].begin(), m[i].end(), 0);
+	for (size_t i = 0; i < matrix.size(); ++i) {
+		result[i] = accumulate(matrix[i].begin(), matrix[i].end(), 0);
 	}
 
    return result;
@@ -113,19 +113,19 @@ VInt sumColumn(const Matrix& matrix){
    return result;
 }
 
-VInt vectSumMin(const Matrix& m){
-	if (m.empty()) return {};
+VInt vectSumMin(const Matrix& matrix){
+	if (matrix.empty()) return {};
 
 	// First, get a vector containing the sum of each row (indexed identically as
 	// the matrix).
-   VInt vSumRow = sumRow(m);
+   VInt vSumRow = sumRow(matrix);
 	// Then, we get index of the row with the smallest sum by getting the distance
 	// between the being iterator and the min_element iterator.
 	size_t indexOfMinSumRow = (size_t)distance(vSumRow.begin(),
 	                          min_element(vSumRow.begin(), vSumRow.end()));
    // Since vSumRow is indexed identically as the matrix, we can access the matrix
 	// with the same index
-	return m[indexOfMinSumRow];
+	return matrix[indexOfMinSumRow];
 }
 
 void shuffleMatrix(Matrix& matrix){
